@@ -33,7 +33,7 @@ Desarrollado por Servicios de Ingeniería JMA.
         "reports/report_invoice_consolidated_template.xml",
 
     ],
-    "images": ["static/description/imagen.png"],
+    "images": ["static/description/icon.png"],
     "installable": True,
     "application": False,
     "auto_install": False,
