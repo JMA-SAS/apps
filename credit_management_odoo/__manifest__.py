@@ -13,6 +13,7 @@
         - Role-based permissions for credit management features.
     """,
     'author': 'JMA',
+    "website": "https://sites.google.com/jmasas.com/jma",
     'depends': ['contacts', 'account', 'base'],
     'data': [
         'security/credit_security.xml',
