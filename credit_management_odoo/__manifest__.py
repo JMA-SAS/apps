@@ -14,6 +14,8 @@
     """,
     'author': 'JMA',
     "website": "https://sites.google.com/jmasas.com/jma",
+    "category": "Accounting",
+    "license": "LGPL-3",
     'depends': ['contacts', 'account', 'base'],
     'data': [
         'security/credit_security.xml',
