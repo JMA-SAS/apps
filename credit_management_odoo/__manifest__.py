@@ -22,6 +22,7 @@
         'views/account_move_views.xml',
 
     ],
+    "images": ["static/description/icon.png"],
     'installable': True,
     'application': False,
     'auto_install': False,
