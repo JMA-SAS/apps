@@ -1,0 +1,15 @@
+<odoo>
+  <!-- Menú principal-->
+  <menuitem id="menu_invoice_report_root"
+          name="Informe de Facturas Consolidado"
+          parent="account.menu_finance_reports"
+          sequence="100"/>
+
+  <!-- Menú generar reporte -->
+  <menuitem id="menu_invoice_report_wizard"
+            name="Generar Reporte"
+            parent="menu_invoice_report_root"
+            action="action_invoice_report_wizard"
+            sequence="10"/>
+
+</odoo>

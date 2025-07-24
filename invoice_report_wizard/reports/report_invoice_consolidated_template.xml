@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_invoice_consolidated">
+    <t t-call="web.external_layout">
+      <t t-set="company" t-value="company_id or (docs and docs[0].company_id)"/>
+      <t t-set="wizard" t-value="docs[0]"/> 
+
+      <div class="page">
+        <main class="oe_structure">
+
+          <br/><br/>
+          <h2>Informe de Facturas Consolidado</h2>
+          <p>Desde: <t t-esc="wizard.date_start"/></p>
+          <p>Hasta: <t t-esc="wizard.date_end"/></p>
+          <p>Total facturas consultadas: <t t-esc="wizard.total_invoices"/></p>
+
+          <t t-set="currency" t-value="wizard.company_id.currency_id"/>
+
+          <div>
+            <strong>Valor Ventas Brutas:</strong>
+            <span t-esc="currency.format(wizard.gross_sales)"/>
+          </div>
+          <div>
+            <strong>Descuentos:</strong>
+            <span t-esc="currency.format(wizard.discount_total)"/>
+          </div>
+          <div>
+            <strong>IVA Ventas:</strong>
+            <span t-esc="currency.format(wizard.vat_total)"/>
+          </div>
+
+          <br/>
+          <h3>Detalle de Documentos</h3>
+          <table class="table table-sm mt32" style="width:100%;">
+            <thead style="display: table-header-group;">
+              <tr>
+                <th>Factura / POS</th>
+                <th>Cliente</th>
+                <th>Método de Pago</th>
+                <th>Monto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="wizard.results_ids" t-as="line">
+                <tr>
+                  <td><t t-esc="line.move_name"/></td>
+                  <td><t t-esc="line.partner_id.name"/></td>
+                  <td><t t-esc="line.payment_method"/></td>
+                  <td class="text-end"><t t-esc="currency.format(line.amount_total)"/></td>
+                </tr>
+              </t>
+            </tbody>
+          </table>
+
+          <t t-if="wizard.payment_summary_ids">
+            <br/>
+            <h3>Totales por Método de Pago</h3>
+            <table class="table table-sm mt16" style="width:100%;">
+              <thead style="display: table-header-group;">
+                <tr>
+                  <th>Método de Pago</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="wizard.payment_summary_ids" t-as="summary">
+                  <tr>
+                    <td><t t-esc="summary.payment_method"/></td>
+                    <td class="text-end"><t t-esc="currency.format(summary.total_amount)"/></td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </t>
+
+          <t t-if="wizard.refund_line_ids">
+            <br/>
+            <h3>Reembolsos POS</h3>
+            <table class="table table-sm mt16" style="width:100%;">
+              <thead style="display: table-header-group;">
+                <tr>
+                  <th>Reembolso</th>
+                  <th>Cliente</th>
+                  <th>Método de Pago</th>
+                  <th>Monto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="wizard.refund_line_ids" t-as="refund">
+                  <tr>
+                    <td><t t-esc="refund.refund_name"/></td>
+                    <td><t t-esc="refund.partner_id.name"/></td>
+                    <td><t t-esc="refund.refund_method"/></td>
+                    <td class="text-end"><t t-esc="currency.format(refund.amount_total)"/></td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </t>
+
+        </main>
+      </div>
+    </t>
+  </template>
+</odoo>
