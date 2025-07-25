@@ -19,6 +19,7 @@ en el módulo de Inventario.
         'wizard/change_deadline_wizard_view.xml',
         
     ],
+    "images": ["static/description/icon.png"],
     'installable': True,
     'application': False,
     'auto_install': False,
