@@ -1,86 +1,56 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Exportador a FTP - Odoo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        h1 {
-            color: #007bff;
-        }
-        code {
-            background: #eee;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-size: 90%;
-        }
-        img {
-            max-width: 100%;
-            margin: 20px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h2 class="oe_slogan">Exportador a FTP para Odoo</h2>
+      <h3 class="oe_slogan">Inventario y Ventas Diarias en CSV</h3>
+      <p class="oe_mt32">
+        Este módulo permite exportar automáticamente información diaria del inventario y las ventas a un servidor FTP en formato CSV. 
+        La exportación se realiza de forma automatizada mediante acciones programadas en Odoo.
+      </p>
 
-    <h1>Exportador a FTP para Odoo</h1>
+      <ul>
+        <li>Exportación de inventario por producto</li>
+        <li>Exportación de ventas diarias por producto</li>
+        <li>Generación automática de archivos CSV</li>
+        <li>Subida directa al servidor FTP configurado</li>
+        <li>Automatización con acciones programadas</li>
+      </ul>
 
-    <p>Este modulo permite exportar diariamente:</p>
-    <ul>
-        <li><strong>Inventario por producto</strong></li>
-        <li><strong>Ventas del dia por producto</strong></li>
-    </ul>
-
-    <h2>Características</h2>
-    <ul>
-        <li>Archivos CSV generados automaticamente</li>
-        <li>Subida directa a un servidor FTP</li>
-        <li>Automatización mediante acciones programadas</li>
-    </ul>
-
-    <h2>Archivos generados</h2>
-    <ul>
+      <h4>Archivos generados</h4>
+      <ul>
         <li><code>inventario_YYYYMMDD.csv</code></li>
         <li><code>ventas_YYYYMMDD.csv</code></li>
-    </ul>
+      </ul>
 
-    <h2>Configuración del FTP</h2>
-    <p>Edita el archivo <code>ftp_export.py</code> con tus credenciales de FTP:</p>
-    <pre><code>ftp_host = 'ftp.tuservidor.com'
+      <h4>Configuración del FTP</h4>
+      <p>Para configurar el servidor FTP, edita el archivo <code>ftp_export.py</code> con tus credenciales:</p>
+      <pre><code>ftp_host = 'ftp.tuservidor.com'
 ftp_user = 'tu_usuario'
 ftp_pass = 'tu_contraseña'
 ruta_remota = '/ruta/ftp/'</code></pre>
 
-    <h2>Instalación</h2>
-    <ol>
-        <li>Copia el módulo a la carpeta <code>addons</code> de Odoo.</li>
-        <li>Instalalo desde el panel de Odoo (modo desarrollador).</li>
-        <li>Crea una acción programada para automatizar la exportación.</li>
-    </ol>
+      <h4>Instalación</h4>
+      <ol>
+        <li>Copia el módulo en la carpeta <code>addons</code> de tu instancia Odoo.</li>
+        <li>Instálalo desde el panel de aplicaciones (modo desarrollador).</li>
+        <li>Crea una acción programada para automatizar la exportación diaria.</li>
+      </ol>
 
-    <h2>Capturas de Pantalla</h2>
+      <h4>Capturas de pantalla</h4>
+      <p>Vista de parámetros configurables desde Odoo:</p>
+      <img src="parametros.png" class="img img-responsive" style="max-width:100%; margin-top:15px;" alt="Parámetros de FTP en Odoo">
 
-    <p>Vista de parametros configurables desde Odoo:</p>
-    <img src="parametros.png" alt="Parametros de FTP en Odoo">
+      <p>Formulario de exportación:</p>
+      <img src="vista_form_exportaciones.png" class="img img-responsive" style="max-width:100%; margin-top:15px;" alt="Formulario de Exportación">
 
-    <p>Formulario de exportación:</p>
-    <img src="vista_form_exportaciones.png" alt="Formulario de Exportación">
+      <p>Lista del historial de exportaciones:</p>
+      <img src="vista_list_historico.png" class="img img-responsive" style="max-width:100%; margin-top:15px;" alt="Vista Lista del Historial">
 
-    <p>Lista del historial de exportaciones:</p>
-    <img src="vista_list_historico.png" alt="Vista Lista del Historial">
+      <p>Formulario del historial de exportaciones:</p>
+      <img src="vista_form_historico.png" class="img img-responsive" style="max-width:100%; margin-top:15px;" alt="Formulario del Historial">
 
-    <p>Formulario del historial de exportaciones:</p>
-    <img src="vista_form_historico.png" alt="Formulario del Historial">
-
-    <h2>Autor</h2>
-    <p><strong>JMA</strong></p>
-    <p>Contacto: <a href="https://sites.google.com/jmasas.com/jma">https://sites.google.com/jmasas.com/jma</a></p>
-
-</body>
-</html>
+      <p><strong>Desarrollado por JMA</strong></p>
+      <p>Contacto: <a href="https://sites.google.com/jmasas.com/jma" target="_blank">https://sites.google.com/jmasas.com/jma</a></p>
+    </div>
+  </div>
+</section>
