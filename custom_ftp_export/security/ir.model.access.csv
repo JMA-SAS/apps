@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ftp_exporter_system_only,access.ftp.exporter.system.only,model_ftp_exporter,base.group_system,1,1,1,1
+access_ftp_export_history_settings_only,access.ftp.export.history.settings.only,model_ftp_export_history,base.group_system,1,1,1,0
