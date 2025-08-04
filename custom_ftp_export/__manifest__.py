@@ -23,6 +23,7 @@ Los archivos se suben automáticamente a un servidor FTP mediante una acción pr
         'views/ftp_exporter_history_views.xml',
         'views/res_config_settings_views.xml',
     ],
+    "images": ["static/description/icon.png"],
     'installable': True,
     'application': False,
     'auto_install': False,
