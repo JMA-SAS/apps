@@ -28,6 +28,7 @@ Características:
     "data": [
         "views/mail_purchase_inbox.xml",
     ],
+    "images": ["static/description/icon.png"],
     "installable": True,
     "application": False,
     "auto_install": False,
