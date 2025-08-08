@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_invoice_report_wizard,access.invoice.report.wizard,model_invoice_report_wizard,account.group_account_user,1,1,1,1
-access_invoice_report_line,access.invoice.report.line,model_invoice_report_line,account.group_account_user,1,1,1,1
-access_invoice_report_payment_summary,access.invoice.report.payment.summary,model_invoice_report_payment_summary,account.group_account_user,1,1,1,1
-access_invoice_report_refund_line,access.invoice.report.refund.line,model_invoice_report_refund_line,account.group_account_user,1,1,1,1
