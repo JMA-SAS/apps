@@ -1,0 +1,57 @@
+
+---
+
+### 🌐 `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mail Purchase Inbox - Odoo Módulo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mail Purchase Inbox</h1>
+    <p><strong>Versión:</strong> 1.0</p>
+    <p><strong>Descripción:</strong> Este módulo permite la lectura de correos de proveedores con archivos PDF adjuntos y la creación automática de órdenes de compra en Odoo.</p>
+
+    <h2>Características</h2>
+    <ul>
+        <li>Lectura automática de correos electrónicos.</li>
+        <li>Procesamiento de archivos PDF con <code>pdfplumber</code>.</li>
+        <li>Creación de órdenes de compra con productos detectados.</li>
+        <li>Emparejamiento automático con contactos de proveedores.</li>
+    </ul>
+
+    <h2>Instalación</h2>
+    <ol>
+        <li>Coloca este módulo en tu carpeta de <code>addons</code>.</li>
+        <li>Reinicia Odoo y actualiza la lista de aplicaciones.</li>
+        <li>Instala el módulo desde la vista de Apps.</li>
+        <li>Asegúrate de tener instalado <code>pdfplumber</code>:</li>
+    </ol>
+    <pre><code>pip install pdfplumber</code></pre>
+
+    <h2>Uso</h2>
+    <p>Los correos serán capturados automáticamente. Desde el registro de entrada, haz clic en "Procesar PDF" para extraer productos y generar la orden de compra.</p>
+
+    <footer>
+        <p>&copy; JMA</p>
+    </footer>
+</body>
+</html>
