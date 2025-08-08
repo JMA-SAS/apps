@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_change_deadline_wizard_form" model="ir.ui.view">
+        <field name="name">change.deadline.wizard.form</field>
+        <field name="model">change.deadline.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cambiar Fecha Límite">
+                <group>
+                    <field name="fecha_limine"/>
+                </group>
+                <footer>
+                    <button string="Confirmar"
+                            type="object"
+                            name="confirmar_fecha"
+                            class="btn btn-success"
+                            />
+                    <button string="Cancelar"
+                            special="cancel"
+                            class="btn btn-danger"
+                            />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
