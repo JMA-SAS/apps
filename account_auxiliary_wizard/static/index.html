@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asistente de Balance Auxiliar - Odoo</title>
+</head>
+<body>
+    <h1>Asistente de Balance Auxiliar</h1>
+
+    <p>Este módulo permite generar vistas previas filtradas del balance auxiliar contable, incluyendo opciones para agrupar por cuentas, terceros, excluir saldos en cero, y más.</p>
+
+    <!-- Imagen -->
+    <img src="static/description/menu_informe.png" alt="Vista del informe auxiliar" style="max-width:100%; border:1px solid #ccc; margin: 20px 0;">
+
+    <h2>Funcionalidades</h2>
+    <ul>
+        <li>Selección entre reporte de <strong>Resumen</strong> o <strong>Detalle</strong>.</li>
+        <li>Filtrado por fechas, cuentas y terceros.</li>
+        <li>Opción para agrupar por cuenta, por tercero, o ambos.</li>
+        <li>Conversión de saldos a la moneda de la compañía.</li>
+        <li>Vista previa en árbol (vista tipo <code>tree</code>) desde el wizard.</li>
+    </ul>
+
+    <h2>Modelo principal</h2>
+    <p><code>account.auxiliary.wizard</code>: modelo transitorio (wizard) que controla la lógica de filtros y parámetros para la vista del balance auxiliar.</p>
+
+    <h2>Vista previa generada</h2>
+    <p>La acción <code>preview_html</code> devuelve una ventana emergente con las líneas contables filtradas mediante vista tipo árbol.</p>
+
+    <h2>Requisitos</h2>
+    <ul>
+        <li>Odoo 17 (compatible con modelos estándar de contabilidad).</li>
+        <li>Dependencias: <code>account</code>.</li>
+    </ul>
+
+    <h2>Acción de Confirmación</h2>
+    <p>El botón de confirmación lanza una notificación al usuario con el mensaje: <em>Se ha confirmado el balance</em>.</p>
+
+    <footer>
+        <hr>
+        <p>Desarrollado por: JMA</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_account_auxiliary_doc_line_tree" model="ir.ui.view">
+        <field name="name">account.auxiliary.doc.line.tree</field>
+        <field name="model">account.auxiliary.doc.line</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="code" string="Código"/>
+                <field name="partner_name" string="Nombre"/>
+                <field name="partner_vat" string="NIT"/>
+                <field name="partner_id" string="Asociado"/>
+                <field name="date"/>
+                <field name="journal_id" string="Diario"/>
+                <field name="move_id" string="Asiento"/>
+                <field name="move_line_name" string="Línea"/>
+                <field name="sequence" string="Posición"/>
+                <field name="initial_balance" string="Inicial"/>
+                <field name="debit" string="Débito"/>
+                <field name="credit" string="Crédito"/>
+                <field name="balance" string="Final"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

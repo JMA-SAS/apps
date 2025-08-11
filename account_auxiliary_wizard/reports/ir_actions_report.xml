@@ -1,0 +1,10 @@
+<odoo>
+  <record id="action_report_account_auxiliary_html" model="ir.actions.report">
+    <field name="name">Auxiliary Report</field>
+    <field name="type">qweb-html</field>
+    <field name="report_name">account_auxiliary_report.report_account_auxiliary_html</field>
+    <field name="report_type">qweb-html</field>
+    <field name="print_report_name">'Auxiliary Report - %s' % (object.id)</field>
+  </record>
+</odoo>
+

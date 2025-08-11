@@ -1,0 +1,60 @@
+<odoo>
+  <template id="report_account_auxiliary_html">
+    <t t-call="web.html_container">
+      <t t-foreach="doc_ids" t-as="doc_id">
+        <t t-set="wizard" t-value="env['account.auxiliary.wizard'].browse(doc_id)"/>
+
+        <div class="page">
+          <h2>Balance Auxiliar</h2>
+          <p><strong>Fecha del informe:</strong> <t t-esc="report_date"/></p>
+          <p><strong>Desde:</strong> <t t-esc="data['date_from']"/> | <strong>Hasta:</strong> <t t-esc="data['date_to']"/></p>
+
+          <table class="table table-sm table-bordered" style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>NIT</th>
+                <th>Asociado</th>
+                <th>Fecha</th>
+                <th>Diario</th>
+                <th>Asiento</th>
+                <th>Línea</th>
+                <th>Posición</th>
+                <th>Cuenta analítica</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Inicial</th>
+                <th>Débito</th>
+                <th>Crédito</th>
+                <th>Final</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-foreach="lines" t-as="line">
+                <tr>
+                  <td><t t-esc="line['code']"/></td>
+                  <td><t t-esc="line['name']"/></td>
+                  <td><t t-esc="line['vat']"/></td>
+                  <td><t t-esc="line['partner']"/></td>
+                  <td><t t-esc="line['date']"/></td>
+                  <td><t t-esc="line['journal']"/></td>
+                  <td><t t-esc="line['move']"/></td>
+                  <td><t t-esc="line['label']"/></td>
+                  <td><t t-esc="line['position']"/></td>
+                  <td><t t-esc="line['analytic']"/></td>
+                  <td><t t-esc="line['origin']"/></td>
+                  <td><t t-esc="line['destination']"/></td>
+                  <td><t t-esc="line['initial']"/></td>
+                  <td><t t-esc="line['debit']"/></td>
+                  <td><t t-esc="line['credit']"/></td>
+                  <td><t t-esc="line['final']"/></td>
+                </tr>
+              </t>
+            </tbody>
+          </table>
+        </div>
+      </t>
+    </t>
+  </template>
+</odoo>
