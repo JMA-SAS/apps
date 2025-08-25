@@ -1,0 +1,129 @@
+<odoo>
+    <template id="invoice_template">
+        <t t-set="o" t-value="docs[0]"/>
+        
+        <!-- ENCABEZADO -->
+        <table style="width:100%; border-collapse: collapse; margin-bottom:5px; border:1px solid white;">
+            <tr>
+                <!-- DATOS DE LA EMPRESA -->
+                <td style="width:60%; vertical-align:top; font-size:13px; border:none;">
+                    <t t-esc="o.company_id.name"/></b><br/>
+                    <t t-esc="o.company_id.street"/><br/>
+                    Tel. <t t-esc="o.company_id.phone"/><br/>
+                    <t t-esc="o.company_id.vat"/>
+                </td>
+
+                <td style="width:40%; text-align:right; vertical-align:top; border:none;">
+                    <span style="font-weight:bold; font-size:16px;">FACTURA</span><br/>
+                    <span style="font-size:12px;">Pag. 1 / 1</span>
+                </td>
+            </tr>
+        </table>
+
+        <!-- DATOS DEL CLIENTE -->
+        <table style="width:100%; border-collapse: collapse; margin-bottom:20px; border:1px solid white;">
+            <tr>
+                <td style="width:60%; border:none;"></td>
+                <td style="width:40%; padding:5px; font-size:13px; border:none;">
+                    <t t-if="o.partner_id">
+                        <b><t t-esc="o.partner_id.name"/></b><br/>
+                        <t t-if="o.partner_id.street"><t t-esc="o.partner_id.street"/><br/></t>
+                        <t t-if="o.partner_id.zip or o.partner_id.city">
+                            <t t-esc="o.partner_id.zip"/> <t t-esc="o.partner_id.city"/><br/>
+                        </t>
+                        <t t-if="o.partner_id.state_id"><t t-esc="o.partner_id.state_id.name"/><br/></t>
+                        <t t-if="o.partner_id.country_id"><t t-esc="o.partner_id.country_id.name"/><br/></t>
+                        <t t-if="o.partner_id.vat"><t t-esc="o.partner_id.vat"/></t>
+                    </t>
+                </td>
+            </tr>
+        </table>
+
+        <table style="width:40%; border-collapse: collapse; margin-bottom:20px; border:1px solid black;  margin-left:auto; margin-right:0;">
+            <tr>
+                <td style="width:40%; padding:5px; font-size:13px; border:1px solid black;">
+                    <b>Número factura:</b><br/>
+                    <t t-esc="o.name"/><br/>
+                </td>
+                <td style="width:40%; padding:5px; font-size:13px; border:1px solid black;">
+                    <b>Data:</b><br/>
+                    <t t-esc="o.invoice_date"/>
+                </td>
+            </tr>
+        </table>
+
+        <!-- TABLA DE LÍNEAS -->
+        <table style="width:100%; border-collapse: collapse; font-size:13px; border:1px solid black;">
+            <thead>
+                <tr>
+                    <th style="border:1px solid black; padding:8px 5px;">Alb.</th>
+                    <th style="border:1px solid black; padding:8px 5px;">Data</th>
+                    <th style="border:1px solid black; padding:8px 5px;">Quant.</th>
+                    <th style="border:1px solid black; padding:8px 5px;">Codi</th>
+                    <th style="border:1px solid black; padding:8px 5px;">Itinerari</th>
+                    <th style="border:1px solid black; padding:8px 5px;">Preu</th>
+                    <th style="border:1px solid black; padding:8px 5px;">IVA</th>
+                    <th style="border:1px solid black; padding:8px 5px;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="o.invoice_line_ids" t-as="line">
+                    <tr>
+                        <td style="border:1px solid black; padding:8px 5px;"></td>
+                        <td style="border:1px solid black; padding:8px 5px;"><t t-esc="o.invoice_date"/></td>
+                        <td style="border:1px solid black; padding:8px 5px; text-align:right;"><t t-esc="line.quantity"/></td>
+                        <td style="border:1px solid black; padding:8px 5px;"><t t-esc="line.product_id.default_code"/></td>
+                        <td style="border:1px solid black; padding:8px 5px;"><t t-esc="line.name"/></td>
+                        <td style="border:1px solid black; padding:8px 5px; text-align:right;"><t t-esc="line.price_unit"/></td>
+                        <td style="border:1px solid black; padding:8px 5px; text-align:right;">
+                            <t t-foreach="line.tax_ids" t-as="tax">
+                                <t t-esc="tax.amount"/>%
+                            </t>
+                        </td>
+                        <td style="border:1px solid black; padding:8px 5px; text-align:right;"><t t-esc="line.price_subtotal"/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </table>
+
+        <!-- SUBTOTALES E IMPUESTOS -->
+        <table style="width:100%; margin-top:20px; font-size:13px; border:none;">
+            <tr>
+                <td style="width:60%; border:1px solid white;"></td>
+                <td style="width:40%; border:none;">
+                    <table style="width:100%; border-collapse: collapse; font-size:13px; border:none;">
+                        <tr>
+                            <td style="text-align:left; border:none;">RETENCIÓ</td>
+                            <td style="text-align:left; border:none;">IVA</td>
+                            <td style="text-align:left; border:none;">Base Imposable</td>
+                            <td style="text-align:left; border:none;">Import IVA</td>
+                        </tr>
+                        <t t-foreach="o.line_ids.filtered(lambda l: l.tax_line_id)" t-as="tax_line">
+                            <tr>
+                                <td style="text-align:right; border:none;">0,000</td>
+                                <td style="text-align:right; border:none;"><t t-esc="tax_line.tax_line_id.amount"/>%</td>
+                                <td style="text-align:right; border:none;"><t t-esc="tax_line.tax_base_amount"/></td>
+                                <td style="text-align:right; border:none;"><t t-esc="tax_line.price_subtotal"/></td>
+                            </tr>
+                        </t>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <br/>
+
+        <!-- TOTAL -->
+        <table style="width:40%; border-collapse: collapse; margin-bottom:20px; border:1px solid black;  margin-left:auto; margin-right:0;">
+            <tr>
+                <td style="width:40%; padding:5px; font-size:13px; border:1px solid black;">
+                    <b>TOTAL FACTURA:</b>
+                </td>
+                <td style="width:40%; padding:5px; font-size:13px; border:1px solid black;">
+                    <t t-esc="o.amount_total"/> €
+                </td>
+            </tr>
+        </table>
+
+    </template>
+</odoo>
