@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_server_time_form" model="ir.ui.view">
+        <field name="name">server.time.form</field>
+        <field name="model">server.time</field>
+        <field name="arch" type="xml">
+            <form string="Tiempos del Sistema" create="false" edit="false">
+                <group>
+                    <field name="server_time" readonly="1"/>
+                    <field name="odoo_time" readonly="1"/>
+                    <field name="postgres_time" readonly="1"/>
+                </group>
+                <footer>
+                    <button string="Actualizar" type="object" name="get_times" class="btn-primary"/>
+                    <button string="Cerrar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_server_time" model="ir.actions.act_window">
+        <field name="name">Tiempos del Sistema</field>
+        <field name="res_model">server.time</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_server_time_root" name="Herramientas" sequence="100"  web_icon="server_time_check,static/description/icon.png"/>
+    <menuitem id="menu_server_time" name="Tiempos del Sistema"
+              parent="menu_server_time_root" action="action_server_time"/>
+</odoo>

@@ -1,0 +1,9 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Grupo opcional para ver el tiempo del servidor -->
+        <record id="group_server_time_manager" model="res.groups">
+            <field name="name">Server Time Manager</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+    </data>
+</odoo>
